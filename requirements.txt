@@ -2,3 +2,4 @@ sanic
 sanic-jwt
 pytest
 pytest-sanic
+werkzeug

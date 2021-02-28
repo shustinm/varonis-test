@@ -1,0 +1,23 @@
+service: example
+
+provider:
+  name: aws
+  runtime: python3.7
+
+functions:
+  api:
+    handler: wsgi_handler.handler
+    events:
+      - http: ANY /
+      - http: ANY {proxy+}
+
+custom:
+  wsgi:
+    app: main.create_app
+  pythonRequirements:
+    dockerizePip: non-linux
+
+plugins:
+  - serverless-wsgi
+  - serverless-offline
+  - serverless-python-requirements
